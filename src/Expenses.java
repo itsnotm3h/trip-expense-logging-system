@@ -8,6 +8,7 @@ public class Expenses {
     protected String sharing;
     protected double cost;
 
+
     //This is the constructor;
     public Expenses() {
 
