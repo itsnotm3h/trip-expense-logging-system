@@ -1,8 +1,8 @@
-public class Calculations extends Expenses {
+public class Calculator extends Expenses {
     private double SGD;
     private double exchangeRate;
 
-    public Calculations() {
+    public Calculator() {
         super();
         exchangeRate = 1.3;
     }
