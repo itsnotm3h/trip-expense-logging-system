@@ -29,7 +29,7 @@ public class Main {
                 System.out.print("The cost: ");
                 double itemCost = sc.nextDouble();
                 sc.nextLine();
-                System.out.print("Sharing (Yes/No): ");
+                System.out.print("Sharing (Y/N): ");
                 String sharing = sc.nextLine();
                 expenseList.add(new Expenses(payerName,itemName,itemCost,sharing));
             }
@@ -58,7 +58,7 @@ public class Main {
                 while(status!=5)
                 {
                     sc.nextLine();
-                    System.out.print("Would you like to perform other task (Yes/No): ");
+                    System.out.print("Would you like to perform other task (Y - Yes / N - No ): ");
                     String checkStatus = sc.nextLine();
 
                     if(checkStatus.equals("Yes")){
