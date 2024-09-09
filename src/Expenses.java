@@ -8,7 +8,6 @@ public class Expenses {
     protected String sharing;
     protected double cost;
 
-
     //This is the constructor;
     public Expenses() {
 
@@ -22,7 +21,7 @@ public class Expenses {
     }
 
     //This is an overloading;
-    public Expenses(String expenseName, double cost, String payerName, String sharing) {
+    public Expenses(String payerName,String expenseName, double cost, String sharing) {
         this.expenseName = expenseName;
         this.cost = cost;
         this.PayerName = payerName; // Default payer name
