@@ -29,6 +29,25 @@ public class Expenses {
         this.sharing = sharing;
     }
 
+    public static void updateEntry(Expenses expense, int option, String changeType){
+        if(option == 1)
+        {
+            expense.setExpenseName(changeType);
+        }
+        if(option == 2)
+        {
+            expense.setCost(Double.parseDouble(changeType));
+        }
+        if(option == 3)
+        {
+            expense.setPayerName(changeType);
+        }
+        if(option == 4)
+        {
+            expense.setPayerName(changeType);
+        }
+    }
+
     //Getter & Setter for names
     public String getExpenseName(){
         return this.expenseName;

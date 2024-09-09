@@ -40,11 +40,13 @@ public class Main {
                 System.out.print("Enter the index of the item you want to edit. ");
                 int option = sc.nextInt();
                 Expenses selectedItem = expenseList.get(option-1);
-//                System.out.print("Enter index to change (1.Item name, 2.Cost, 3.Paid by, 4.Sharing): ");
-//                option = sc.nextInt();
-//                System.out.print("Enter the changes: ");
-//                String changeType = sc.nextLine();
-                selectedItem.setCost(2.3);
+                System.out.print("Enter index to change (1.Item name, 2.Cost, 3.Paid by, 4.Sharing): ");
+                option = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Enter the changes: ");
+                String changeType = sc.nextLine();
+//                selectedItem.setExpenseName(changeType);
+                Expenses.updateEntry(selectedItem,option,changeType);
 
 
 
