@@ -1,32 +1,32 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Expenses {
+public abstract class Expenses {
     protected String dates;
     protected String expenseName;
     protected String PayerName;
-    protected String sharing;
     protected double cost;
+
+
+    public abstract String getMore();
 
     //This is the constructor;
     public Expenses() {
 
         this.expenseName = "N/A";
         this.dates = setDate();
-        this.PayerName = "Unknown";
+        this.PayerName = "Me";
 
         //Improvement needed.
-        this.sharing = "NO";
         this.cost = 0;
     }
 
     //This is an overloading;
-    public Expenses(String payerName,String expenseName, double cost, String sharing) {
+    public Expenses(String payerName,String expenseName, double cost) {
         this.expenseName = expenseName;
         this.cost = cost;
         this.PayerName = payerName; // Default payer name
         this.dates = setDate(); // Initialize date
-        this.sharing = sharing;
     }
 
     public static void updateEntry(Expenses expense, int option, String changeType){
@@ -63,6 +63,7 @@ public class Expenses {
         return dateTime.format(formatter);
     }
 
+
     //Getter & Setter for dates
     public String getDate(){
         return this.dates;
@@ -77,16 +78,8 @@ public class Expenses {
         return this.PayerName;
     }
 
-    //Getter & Setter for PayerName
-    public void setSharing(String sharing){
-        this.sharing = sharing;
-    }
 
-    public String getSharing(){
-        return this.sharing;
-    }
-
-    //Getter & Setter for PayerName
+    //Getter & Setter for Cost
     public void setCost(double cost){
         this.cost = cost;
     }

@@ -1,4 +1,4 @@
-public class Calculator extends Expenses {
+public class Calculator {
     private double SGD;
     private double exchangeRate;
 
