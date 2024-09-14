@@ -1,22 +1,27 @@
 public class PersonalExpenses extends Expenses {
-    protected String method;
-
+protected String gift;
     public PersonalExpenses() {
         super();
-        method = "Cash";
+        gift = "Myself";
     }
 
-    public PersonalExpenses(String payerName, String expenseName, double cost, String method) {
-        super(payerName, expenseName, cost);
+    public PersonalExpenses(String expenseName, double cost,String gift) {
+        super(expenseName, cost);
         this.dates = setDate();
-        this.method = method;
+        this.gift = gift;
     }
 
     public String getMore() {
-        return " | Payment By:"+ method;
+        return " | Gift For:"+ gift;
     }
 
-//    public void setPaymentMethod(String paymentMethod) {
-//        this.method = paymentMethod;
-//    }
+
+    public void updateInfo(String changeType) {
+           this.gift = changeType;
+    }
+
+
+
+
+
 }

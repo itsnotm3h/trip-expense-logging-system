@@ -11,9 +11,8 @@ public class Printer {
                 System.out.println(item.getDate());
             }
             System.out.print(count + ". ");
-            System.out.print(item.expenseName);
-            System.out.print(" | Cost:" + item.cost);
-            System.out.print(" | Payer:" + item.PayerName);
+            System.out.print("Item:" + item.expenseName);
+            System.out.print(" | Cost:$ " + item.cost);
             System.out.print(item.getMore());
             System.out.println();
             compareDate = item.getDate();
@@ -24,8 +23,6 @@ public class Printer {
     static void printAll(Expenses selectedItem){
         System.out.print(selectedItem.expenseName);
         System.out.print(" | Cost:" + selectedItem.cost);
-        System.out.print(" | Paid By:" + selectedItem.PayerName);
-//        System.out.print(" | Sharing:" + selectedItem.sharing);
         System.out.println();
     }
 
@@ -34,7 +31,7 @@ public class Printer {
             if (status == 0) {
                 System.out.println("------- Trip Expense Calculator -------");
                 System.out.println("Please choose an option below to start:");
-                System.out.println("1. Add a new expense");
+                System.out.println("1. Add an expense");
                 System.out.println("2. Edit entry");
                 System.out.println("3. Delete entry");
                 System.out.println("4. Print out Summary.");
@@ -45,13 +42,15 @@ public class Printer {
             if (status == 1) {
 
                 System.out.println();
-                System.out.println("---- Add Expenses ----");
+                System.out.println("---- Add an expense ----");
             }
+
             if (status == 2) {
 
                 System.out.println();
                 System.out.println("---- Edit Expenses ----");
             }
+
             if (status == 3) {
 
                 System.out.println();

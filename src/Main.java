@@ -1,7 +1,5 @@
-
-
-        import java.util.ArrayList;
-        import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner;
 
         public class Main {
 
@@ -14,7 +12,7 @@
 //                expenseList.add(new Expenses());
                 expenseList.add(new PersonalExpenses());
                 expenseList.add(new SharedExpenses());
-                Printer.printAll(expenseList);
+//                Printer.printAll(expenseList);
 
                 while(true){
                     int status = 0;
@@ -25,19 +23,31 @@
                     Printer.printAll(status);
 
 
-                    if(status == 1 )
+                    if(status == 1)
                     {
                         sc.nextLine();
-                        System.out.print("Enter the payer's name: ");
-                        String payerName = sc.nextLine();
+                        System.out.print("Enter Expense Type, 1-Personal, 2-Shared: ");
+                        int expenseType = sc.nextInt();
+                        sc.nextLine();
                         System.out.print("The item: ");
                         String itemName = sc.nextLine();
                         System.out.print("The cost: ");
                         double itemCost = sc.nextDouble();
                         sc.nextLine();
-                        System.out.print("Sharing (Y/N): ");
-                        String sharing = sc.nextLine();
-//                        expenseList.add(new Expenses(payerName,itemName,itemCost,sharing));
+
+                        if(expenseType == 1)
+                        {
+                            System.out.print("Gift For: ");
+                            String gift  = sc.nextLine();
+                            expenseList.add(new PersonalExpenses(itemName,itemCost,gift));
+                        }
+                        else if (expenseType == 2)
+                        {
+                            sc.nextLine();
+                            System.out.print("Enter who you are sharing with: ");
+                            String sharing  = sc.nextLine();
+                            expenseList.add(new SharedExpenses(itemName,itemCost,sharing));
+                        }
 
                     }
 
@@ -50,7 +60,9 @@
                         Expenses selectedItem = expenseList.get(option-1);
                         System.out.println("You have selected to edit:");
                         Printer.printAll(selectedItem);
-                        System.out.print("\n"+"To an item to change"+"\n"+"Please enter 1-Item name, 2-Cost, 3-Paid by, 4-Sharing to change item: ");
+                        // IF i want to keep this, then i will have to shift this function into update info.
+                        // Ask the user to change the sharing into an arrayList.
+                        System.out.print("\n"+"To an item to change"+"\n"+"Please enter 1-Item name, 2-Cost, 3-ClassName:");
                         option = sc.nextInt();
                         sc.nextLine();
                         System.out.print("Enter the changes: ");
@@ -58,14 +70,12 @@
                         Expenses.updateEntry(selectedItem,option,changeType);
                         System.out.print("The new entry:");
                         Printer.printAll(selectedItem);
-
-
                     }
 
                     if(status == 3)
                     {
                         Printer.printAll(expenseList);
-                        System.out.print("Enter the index of the item you want to edit. ");
+                        System.out.print("Enter the index of the item you want to delete. ");
                         int option = sc.nextInt();
                         expenseList.remove(option-1);
                     }

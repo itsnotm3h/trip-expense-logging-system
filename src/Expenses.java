@@ -4,49 +4,46 @@ import java.time.format.DateTimeFormatter;
 public abstract class Expenses {
     protected String dates;
     protected String expenseName;
-    protected String PayerName;
     protected double cost;
 
-
     public abstract String getMore();
+    public abstract void updateInfo(String changeType);
+
 
     //This is the constructor;
     public Expenses() {
 
         this.expenseName = "N/A";
         this.dates = setDate();
-        this.PayerName = "Me";
 
         //Improvement needed.
         this.cost = 0;
     }
 
     //This is an overloading;
-    public Expenses(String payerName,String expenseName, double cost) {
+    public Expenses(String expenseName, double cost) {
         this.expenseName = expenseName;
         this.cost = cost;
-        this.PayerName = payerName; // Default payer name
         this.dates = setDate(); // Initialize date
     }
 
-    public static void updateEntry(Expenses expense, int option, String changeType){
+    public static void updateEntry(Expenses selectedItem, int option, String changeType){
         if(option == 1)
         {
-            expense.setExpenseName(changeType);
+            selectedItem.setExpenseName(changeType);
         }
         if(option == 2)
         {
-            expense.setCost(Double.parseDouble(changeType));
+            selectedItem.setCost(Double.parseDouble(changeType));
         }
         if(option == 3)
         {
-            expense.setPayerName(changeType);
-        }
-        if(option == 4)
-        {
-            expense.setPayerName(changeType);
+            selectedItem.updateInfo(changeType);
         }
     }
+
+
+
 
     //Getter & Setter for names
     public String getExpenseName(){
@@ -64,18 +61,10 @@ public abstract class Expenses {
     }
 
 
+
     //Getter & Setter for dates
     public String getDate(){
         return this.dates;
-    }
-
-    //Getter & Setter for PayerName
-    public void setPayerName(String name){
-        this.PayerName = name;
-    }
-
-    public String getPayerName(){
-        return this.PayerName;
     }
 
 
