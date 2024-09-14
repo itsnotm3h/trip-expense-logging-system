@@ -57,12 +57,11 @@ import java.util.Scanner;
                         System.out.println();
                         System.out.print("Enter the index of the item you want to edit: ");
                         int option = sc.nextInt();
+                        System.out.println();
                         Expenses selectedItem = expenseList.get(option-1);
                         System.out.println("You have selected to edit:");
                         Printer.printAll(selectedItem);
-                        // IF i want to keep this, then i will have to shift this function into update info.
-                        // Ask the user to change the sharing into an arrayList.
-                        System.out.print("\n"+"To an item to change"+"\n"+"Please enter 1-Item name, 2-Cost, 3-ClassName:");
+                        System.out.print("\n"+"To an item to change"+"\n"+"Please enter 1-Item name, 2-Cost, 3-" + selectedItem.printEdit() +":" );
                         option = sc.nextInt();
                         sc.nextLine();
                         System.out.print("Enter the changes: ");

@@ -8,6 +8,7 @@ public abstract class Expenses {
 
     public abstract String getMore();
     public abstract void updateInfo(String changeType);
+    public abstract String printEdit();
 
 
     //This is the constructor;
@@ -43,8 +44,6 @@ public abstract class Expenses {
     }
 
 
-
-
     //Getter & Setter for names
     public String getExpenseName(){
         return this.expenseName;
@@ -59,7 +58,6 @@ public abstract class Expenses {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
         return dateTime.format(formatter);
     }
-
 
 
     //Getter & Setter for dates

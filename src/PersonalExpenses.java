@@ -11,6 +11,11 @@ protected String gift;
         this.gift = gift;
     }
 
+    public String printEdit(){
+        return "Gift";
+    }
+
+
     public String getMore() {
         return " | Gift For:"+ gift;
     }
@@ -19,8 +24,6 @@ protected String gift;
     public void updateInfo(String changeType) {
            this.gift = changeType;
     }
-
-
 
 
 
