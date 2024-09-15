@@ -29,14 +29,11 @@ protected String gift;
         System.out.println("Current Gift for: "+ this.gift);
         System.out.print("New Gift for: ");
         Scanner sc = new Scanner(System.in);
-        this.gift = sc.nextLine();
-    }
+        String newGift = sc.nextLine();
+        Main.validateText(newGift);
+        this.gift = newGift;
 
-//    @Override
-//    public double calculateCost() {
-//        double totalCost; // 10% tax rate
-//        return getPrice() * taxPercentage;
-//    }
+    }
 
 
 

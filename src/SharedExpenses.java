@@ -58,31 +58,33 @@ protected ArrayList<String> Sharing;
           System.out.println(count+"-"+sharingNames);
         }
 
+        int lastOption = count +1;
         System.out.println((count+1) + "-Add new name\n");
         System.out.print("Enter option to edit or add a new name: ");
 
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
         sc.nextLine();
+        Main.validateOption(option,lastOption);
 
 
-        if(option < this.Sharing.size())
+        if(option < this.Sharing.size() || option > 0)
         {
             System.out.println("Current name: " + this.Sharing.get(option-1));
         }
 
         System.out.print("Please enter the new name: ");
         String newInfo = sc.nextLine();
+        Main.validateText(newInfo);
 
-        if(option > this.Sharing.size())
+        if(option == this.Sharing.size() + 1)
         {
             this.Sharing.add(newInfo);
 
         }
-        else {
+        else if (option <this.Sharing.size() && option > 0){
             this.Sharing.set(option-1,newInfo);
         }
-
 
 //        Sharing.set(0, changeType);
     }

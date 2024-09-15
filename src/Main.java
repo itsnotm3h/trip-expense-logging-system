@@ -9,10 +9,8 @@ import java.util.Scanner;
                 Scanner sc = new Scanner(System.in);
 
                 //Generate default line for testing.
-//                expenseList.add(new Expenses());
-//                expenseList.add(new PersonalExpenses());
-//                expenseList.add(new SharedExpenses());
-//                Printer.printAll(expenseList);
+                expenseList.add(new PersonalExpenses());
+                expenseList.add(new SharedExpenses());
 
                 while(true){
                     int status = 0;
@@ -20,7 +18,7 @@ import java.util.Scanner;
                     Printer.printAll(status);
                     System.out.print("Enter the your option: ");
                     status = sc.nextInt();
-                    validateOption(status);
+                    validateStatus(status);
 
                     Printer.printAll(status);
 
@@ -32,8 +30,7 @@ import java.util.Scanner;
                             sc.nextLine();
                             System.out.print("Enter Expense Type, 1-Personal, 2-Shared: ");
                             int expenseType = sc.nextInt();
-                            validateOption(expenseType);
-
+                            validateOption(expenseType,2);
                             sc.nextLine();
                             System.out.print("The item: ");
                             String itemName = sc.nextLine();
@@ -68,7 +65,7 @@ import java.util.Scanner;
                         System.out.println();
                         System.out.print("Enter the index of the item you want to edit: ");
                         int option = sc.nextInt();
-                        validateOption(option);
+                        validateOption(option,expenseList.size());
 
                         System.out.println();
                         Expenses selectedItem = expenseList.get(option-1);
@@ -77,10 +74,11 @@ import java.util.Scanner;
                         Printer.printAll(selectedItem);
                         System.out.print("\nPlease enter 1-Item, 2-Cost, 3-" + selectedItem.printEdit() +": " );
                         option = sc.nextInt();
-                        validateOption(option);
+                        validateOption(option,3);
+
                         String changeType="";
 
-                        if(option != 3)
+                        if(option >= 1 && option <=2)
                         {
                             String itemToChange ="";
                             sc.nextLine();
@@ -88,7 +86,7 @@ import java.util.Scanner;
                             {
                                 itemToChange = " Item:" + selectedItem.expenseName;
                             }
-                            if(option == 2)
+                            else
                             {
                                 itemToChange = " Cost: $"+ selectedItem.cost;
                             }
@@ -99,6 +97,7 @@ import java.util.Scanner;
                             changeType = sc.nextLine();
                             validateText(changeType);
                         }
+
 
 
                         Expenses.updateEntry(selectedItem,option,changeType);
@@ -119,12 +118,15 @@ import java.util.Scanner;
                     if(status == 3)
                     {
                         Printer.printAll(expenseList);
-                        System.out.print("Enter the index of the item you want to delete. ");
+                        System.out.print("\nEnter index to delete: ");
                         int option = sc.nextInt();
-                        validateOption(option);
+                        validateOption(option,expenseList.size());
+                        Expenses selectedItem = expenseList.get(option-1);
+                        System.out.print("You have successfully remove the entry: " + option +". ");
+                        Printer.printAll(selectedItem);
                         expenseList.remove(option-1);
 
-                        System.out.print("You have successfully remove the entry!");
+
 
                     }
 
@@ -178,21 +180,28 @@ import java.util.Scanner;
             }
 
             //This to catch the error.
-            private static void validateOption(int option) {
+            public static void validateStatus(int option) {
                 if (option <= 0 || option > 5) {
                     throw new IllegalArgumentException("Option cannot be null or empty.");
                 }
 
             }
 
-            private static void validateText(String input) {
+            public static void validateOption(int option, int limit) {
+                if (option <= 0 || option > limit) {
+                    throw new IllegalArgumentException("Invalid option.");
+                }
+
+            }
+
+            public static void validateText(String input) {
                 if (input == null || input.isEmpty()) {
                     throw new IllegalArgumentException("Input cannot be null or empty.");
                 }
 
             }
 
-            private static void validateCost(double input) {
+            public static void validateCost(double input) {
                 if (input <= 0) {
                     throw new IllegalArgumentException("Invalid input for cost.");
                 }
