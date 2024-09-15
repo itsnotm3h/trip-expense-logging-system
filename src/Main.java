@@ -9,8 +9,8 @@ import java.util.Scanner;
                 Scanner sc = new Scanner(System.in);
 
                 //Generate default line for testing.
-                expenseList.add(new PersonalExpenses());
-                expenseList.add(new SharedExpenses());
+//                expenseList.add(new PersonalExpenses());
+//                expenseList.add(new SharedExpenses());
 
                 while(true){
                     int status = 0;
@@ -21,6 +21,8 @@ import java.util.Scanner;
                     validateStatus(status);
 
                     Printer.printAll(status);
+
+                    int checkArray = expenseList.size();
 
 
                     try {
@@ -61,6 +63,7 @@ import java.util.Scanner;
 
                     if(status == 2 )
                     {
+                        validateArray(checkArray);
                         Printer.printAll(expenseList);
                         System.out.println();
                         System.out.print("Enter the index of the item you want to edit: ");
@@ -117,6 +120,8 @@ import java.util.Scanner;
 
                     if(status == 3)
                     {
+                        validateArray(checkArray);
+
                         Printer.printAll(expenseList);
                         System.out.print("\nEnter index to delete: ");
                         int option = sc.nextInt();
@@ -125,13 +130,12 @@ import java.util.Scanner;
                         System.out.print("You have successfully remove the entry: " + option +". ");
                         Printer.printAll(selectedItem);
                         expenseList.remove(option-1);
-
-
-
                     }
 
                     if(status == 4 )
                     {
+                        validateArray(checkArray);
+
                         Printer.printAll(expenseList);
                         double totalCost = 0;
                         double totalShared = 0;
@@ -178,11 +182,19 @@ import java.util.Scanner;
 
 
             }
+            //This to catch the error.
+            public static void validateArray(int option) {
+                if (option <= 0 || option > 5) {
+                    throw new IllegalArgumentException("No data found.");
+                }
+
+            }
+
 
             //This to catch the error.
             public static void validateStatus(int option) {
                 if (option <= 0 || option > 5) {
-                    throw new IllegalArgumentException("Option cannot be null or empty.");
+                    throw new IllegalArgumentException("Invalid option");
                 }
 
             }
