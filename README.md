@@ -11,4 +11,4 @@
 1. Staff: they should be able to integrate the application into their daily operations
 2. Supervisor: the application should cut down on the time needed to enter new products and to update the stock of existing products
 
-# Use Case: Add a new expenses
+### Use Case: Add a new expenses
