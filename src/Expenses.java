@@ -7,8 +7,9 @@ public abstract class Expenses {
     protected double cost;
 
     public abstract String getMore();
-    public abstract void updateInfo(String changeType);
+    public abstract void updateInfo();
     public abstract String printEdit();
+
 
 
     //This is the constructor;
@@ -39,15 +40,19 @@ public abstract class Expenses {
         }
         if(option == 3)
         {
-            selectedItem.updateInfo(changeType);
+            selectedItem.updateInfo();
+
         }
     }
+
 
 
     //Getter & Setter for names
     public String getExpenseName(){
         return this.expenseName;
     }
+
+
 
     public void setExpenseName(String name){
         this.expenseName = name;
@@ -70,7 +75,6 @@ public abstract class Expenses {
     public void setCost(double cost){
         this.cost = cost;
     }
-
     public double getCost(){
         return this.cost;
     }

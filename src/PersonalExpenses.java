@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 public class PersonalExpenses extends Expenses {
 protected String gift;
+
     public PersonalExpenses() {
         super();
-        gift = "Myself";
+        gift = "Unknown";
     }
 
     public PersonalExpenses(String expenseName, double cost,String gift) {
@@ -11,19 +14,29 @@ protected String gift;
         this.gift = gift;
     }
 
+    @Override
     public String printEdit(){
         return "Gift";
     }
 
-
+    @Override
     public String getMore() {
-        return " | Gift For:"+ gift;
+        return " | Gift For: "+ gift;
     }
 
-
-    public void updateInfo(String changeType) {
-           this.gift = changeType;
+    @Override
+    public void updateInfo() {
+        System.out.println("Current Gift for: "+ this.gift);
+        System.out.print("New Gift for: ");
+        Scanner sc = new Scanner(System.in);
+        this.gift = sc.nextLine();
     }
+
+//    @Override
+//    public double calculateCost() {
+//        double totalCost; // 10% tax rate
+//        return getPrice() * taxPercentage;
+//    }
 
 
 

@@ -2,40 +2,42 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SharedExpenses extends Expenses {
-//    protected String Sharing;
-// Changes sharing into arrayList and arrayList.
 protected ArrayList<String> Sharing;
-protected ArrayList<SharedExpenses> allNames;
+//protected ArrayList<SharedExpenses> allNames;
 
 
     public SharedExpenses() {
         super();
         Sharing = new ArrayList<>();
         Sharing.add("Unknown");
-        Sharing.add("Unknown");
-
     }
 
     public SharedExpenses(String expenseName, double cost, String Sharing) {
         super(expenseName,cost);
+
+        this.dates = setDate();
         this.Sharing = new ArrayList<>();
-        this.Sharing.add(Sharing);
+        String[] namesList = Sharing.split(",");
+
+        for(String names : namesList) {
+            this.Sharing.add(names);
+        }
+
     }
 
-//    public void setSharing(String Sharing){
-//        this.Sharing = Sharing;
-//    }
+    public ArrayList<String> getSharing() {
+        return Sharing;
+    }
 
-//    public ArrayList<String> getItems() {
-//        return items;
-//    }
-public String printEdit(){
+    @Override
+    public String printEdit(){
     return "Sharing";
-}
+    }
 
 
+    @Override
     public String getMore() {
-        return " | Sharing with:"+ Sharing;
+        return " | Sharing with: "+ Sharing;
     }
 
 
@@ -45,8 +47,10 @@ public String printEdit(){
     // 4. Select who to remove or changes.
     // 5. Type in new entry to change
     // 6. update the change.
-    public void updateInfo(String changeType) {
-        System.out.println("Please Select from the following:");
+    @Override
+    public void updateInfo() {
+
+        System.out.println("\nCurrent sharing list: ");
         int count=0;
 
         for(String sharingNames : this.Sharing)
@@ -54,9 +58,31 @@ public String printEdit(){
           System.out.println(count+"-"+sharingNames);
         }
 
+        System.out.println((count+1) + "-Add new name\n");
+        System.out.print("Enter option to edit or add a new name: ");
+
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
-        this.Sharing.set(option-1, changeType);
+        sc.nextLine();
+
+
+        if(option < this.Sharing.size())
+        {
+            System.out.println("Current name: " + this.Sharing.get(option-1));
+        }
+
+        System.out.print("Please enter the new name: ");
+        String newInfo = sc.nextLine();
+
+        if(option > this.Sharing.size())
+        {
+            this.Sharing.add(newInfo);
+
+        }
+        else {
+            this.Sharing.set(option-1,newInfo);
+        }
+
 
 //        Sharing.set(0, changeType);
     }

@@ -10,8 +10,8 @@ import java.util.Scanner;
 
                 //Generate default line for testing.
 //                expenseList.add(new Expenses());
-                expenseList.add(new PersonalExpenses());
-                expenseList.add(new SharedExpenses());
+//                expenseList.add(new PersonalExpenses());
+//                expenseList.add(new SharedExpenses());
 //                Printer.printAll(expenseList);
 
                 while(true){
@@ -20,34 +20,45 @@ import java.util.Scanner;
                     Printer.printAll(status);
                     System.out.print("Enter the your option: ");
                     status = sc.nextInt();
+                    validateOption(status);
+
                     Printer.printAll(status);
 
 
+                    try {
                     if(status == 1)
                     {
-                        sc.nextLine();
-                        System.out.print("Enter Expense Type, 1-Personal, 2-Shared: ");
-                        int expenseType = sc.nextInt();
-                        sc.nextLine();
-                        System.out.print("The item: ");
-                        String itemName = sc.nextLine();
-                        System.out.print("The cost: ");
-                        double itemCost = sc.nextDouble();
-                        sc.nextLine();
 
-                        if(expenseType == 1)
-                        {
-                            System.out.print("Gift For: ");
-                            String gift  = sc.nextLine();
-                            expenseList.add(new PersonalExpenses(itemName,itemCost,gift));
-                        }
-                        else if (expenseType == 2)
-                        {
                             sc.nextLine();
-                            System.out.print("Enter who you are sharing with: ");
-                            String sharing  = sc.nextLine();
-                            expenseList.add(new SharedExpenses(itemName,itemCost,sharing));
-                        }
+                            System.out.print("Enter Expense Type, 1-Personal, 2-Shared: ");
+                            int expenseType = sc.nextInt();
+                            validateOption(expenseType);
+
+                            sc.nextLine();
+                            System.out.print("The item: ");
+                            String itemName = sc.nextLine();
+                            validateText(itemName);
+                            System.out.print("The cost: ");
+                            double itemCost = sc.nextDouble();
+                            validateCost(itemCost);
+
+                            if (expenseType == 1) {
+                                sc.nextLine();
+                                System.out.print("Gift For: ");
+                                String gift = sc.nextLine();
+                                validateText(gift);
+                                expenseList.add(new PersonalExpenses(itemName, itemCost, gift));
+
+                            } else if (expenseType == 2) {
+                                sc.nextLine();
+                                System.out.print("Enter who you are sharing with (Ex: name1, name2):");
+
+                                String sharing = sc.nextLine();
+                                validateText(sharing);
+                                expenseList.add(new SharedExpenses(itemName, itemCost, sharing));
+                            }
+                        System.out.println("You have successfully added the entry!");
+
 
                     }
 
@@ -57,18 +68,52 @@ import java.util.Scanner;
                         System.out.println();
                         System.out.print("Enter the index of the item you want to edit: ");
                         int option = sc.nextInt();
+                        validateOption(option);
+
                         System.out.println();
                         Expenses selectedItem = expenseList.get(option-1);
                         System.out.println("You have selected to edit:");
+                        System.out.print(option +".");
                         Printer.printAll(selectedItem);
-                        System.out.print("\n"+"To an item to change"+"\n"+"Please enter 1-Item name, 2-Cost, 3-" + selectedItem.printEdit() +":" );
+                        System.out.print("\nPlease enter 1-Item, 2-Cost, 3-" + selectedItem.printEdit() +": " );
                         option = sc.nextInt();
-                        sc.nextLine();
-                        System.out.print("Enter the changes: ");
-                        String changeType = sc.nextLine();
+                        validateOption(option);
+                        String changeType="";
+
+                        if(option != 3)
+                        {
+                            String itemToChange ="";
+                            sc.nextLine();
+                            if(option == 1)
+                            {
+                                itemToChange = " Item:" + selectedItem.expenseName;
+                            }
+                            if(option == 2)
+                            {
+                                itemToChange = " Cost: $"+ selectedItem.cost;
+                            }
+
+                            System.out.println("\n"+"Current" + itemToChange +".");
+                            System.out.print("Enter New Edit: ");
+
+                            changeType = sc.nextLine();
+                            validateText(changeType);
+                        }
+
+
                         Expenses.updateEntry(selectedItem,option,changeType);
-                        System.out.print("The new entry:");
+
+
+
+
+
+                        System.out.println("\nYou have successfully edited the entry!");
+
+                        System.out.print("The new entry: ");
+                        System.out.print(option +".");
                         Printer.printAll(selectedItem);
+
+
                     }
 
                     if(status == 3)
@@ -76,27 +121,84 @@ import java.util.Scanner;
                         Printer.printAll(expenseList);
                         System.out.print("Enter the index of the item you want to delete. ");
                         int option = sc.nextInt();
+                        validateOption(option);
                         expenseList.remove(option-1);
+
+                        System.out.print("You have successfully remove the entry!");
+
                     }
 
                     if(status == 4 )
                     {
                         Printer.printAll(expenseList);
+                        double totalCost = 0;
+                        double totalShared = 0;
+                        double individualPortion = 0;
+                        for(Expenses cost: expenseList)
+                        {
+
+                            if (cost instanceof PersonalExpenses) {
+                                double thisCost = cost.getCost();
+                                totalCost = totalCost + thisCost;
+                            }
+
+                            else if(cost instanceof SharedExpenses)
+                            {
+                                double thisCost = cost.getCost();
+                                ArrayList<String> currentSharedArray = ((SharedExpenses) cost).getSharing();
+                                double sharedPortion = thisCost / (currentSharedArray.size()+1);
+                                totalShared =  totalShared + (thisCost - sharedPortion);
+                                individualPortion = individualPortion + sharedPortion;
+                            }
+
+                        }
+                        System.out.println("\nTotal Personal Spending: $" + (Math.round(totalCost * 100.0) / 100.0));
+                        System.out.println("Your share of Shared Spending: $" + (Math.round(individualPortion * 100.0) / 100.0));
+                        System.out.println("Amount to get back: $" + (Math.round(totalShared * 100.0) / 100.0));
+
                     }
 
                     if(status == 5)
                     {
-                        Printer.printAll(status);
                         break;
                     }
+
                     System.out.println();
+                    }
 
-
+                    catch(IllegalArgumentException e)
+                    {
+                        System.out.println("Error: " + e.getMessage() + " Please try again.");
+                        System.out.println();
+                    }
 
                 }
 
 
             }
+
+            //This to catch the error.
+            private static void validateOption(int option) {
+                if (option <= 0 || option > 5) {
+                    throw new IllegalArgumentException("Option cannot be null or empty.");
+                }
+
+            }
+
+            private static void validateText(String input) {
+                if (input == null || input.isEmpty()) {
+                    throw new IllegalArgumentException("Input cannot be null or empty.");
+                }
+
+            }
+
+            private static void validateCost(double input) {
+                if (input <= 0) {
+                    throw new IllegalArgumentException("Invalid input for cost.");
+                }
+
+            }
+
 
             //This is a method to print. //Thinking about creating a specific print class.
 

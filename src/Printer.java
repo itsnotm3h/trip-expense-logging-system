@@ -11,8 +11,8 @@ public class Printer {
                 System.out.println(item.getDate());
             }
             System.out.print(count + ". ");
-            System.out.print("Item:" + item.expenseName);
-            System.out.print(" | Cost:$" + item.cost);
+            System.out.print("Item: " + item.expenseName);
+            System.out.print(" | Cost: $" + item.cost);
             System.out.print(item.getMore());
             System.out.println();
             compareDate = item.getDate();
@@ -21,8 +21,8 @@ public class Printer {
 //
 //
     static void printAll(Expenses selectedItem){
-        System.out.print(selectedItem.expenseName);
-        System.out.print(" | Cost:" + selectedItem.cost);
+        System.out.print("Item: " + selectedItem.expenseName);
+        System.out.print(" | Cost: $" + selectedItem.cost);
         System.out.print(selectedItem.getMore());
         System.out.println();
     }
@@ -60,7 +60,7 @@ public class Printer {
             if (status == 4) {
 
                 System.out.println();
-                System.out.println("---- Print Summary ----");
+                System.out.println("---- Expense Summary ----");
             }
 
 
