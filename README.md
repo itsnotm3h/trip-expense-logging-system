@@ -12,6 +12,7 @@ The purpose of the Trip Expenses Calculator is to provide an easy-to-use tool fo
 2. Secondary Users: Travelers who share expenses during trips.
 
 
+
 # Use Cases
 
 ## Add a new expenses
@@ -40,6 +41,8 @@ The purpose of the Trip Expenses Calculator is to provide an easy-to-use tool fo
 **Preconditions:**
 - A new expense is added into the system.
 - The treasure can view the details of the new expenses. 
+
+
 
 ## Edit an entry.
 
