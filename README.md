@@ -1,4 +1,4 @@
-# trip-expense-logging-system
+# Trip Expense Logging System
 The purpose of the Trip Expenses Calculator is to provide an easy-to-use tool for tracking both shared and individual expenses during trips. Acting as a digital treasurer, this tool allows travelers to record, manage, and separate personal expenses from shared costs, ensuring clear and transparent financial management throughout the journey.
 
 ### Business Objectives
