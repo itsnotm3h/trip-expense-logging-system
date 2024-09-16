@@ -12,15 +12,68 @@ The purpose of the Trip Expenses Calculator is to provide an easy-to-use tool fo
 2. Secondary Users: Travelers who share expenses during trips.
 
 
-### Use Case: Add a new expenses
+# Use Cases
+
+## Add a new expenses
 
 **Actor:** Treasurer
 
-**Description:** The staff adds a new product to the inventory management system. The product can be either a physical or a digital product.
+**Description:** The Treasurer will add new expenses. The expenses can be either personal or shared. 
+
+**Preconditions:**
+- The Treasurer is logged into the system.
+- The Treasurer has the necessary permissions to add a new product.
+  
+**Steps:**
+1. The treasure will view the menu. Enter option 1 for "Add a new expenses".
+2. The treasure will enter 1 for "Personal" or enter 1 for "Shared".
+3. If the expense is "Personal", the treasurer will enter the following:
+   a. Item Name
+   b. Cost
+   c. Purpose of the expenses.
+4. If the expense is "Shared", the treasurer will enter the following:
+   a. Item Name
+   b. Cost
+   c. Names of people who are sharing.
+5. The treasurer submits the new expense information.
+
+**Preconditions:**
+- A new expense is added into the system.
+- The treasure can view the details of the new expenses. 
+
+## Edit an entry.
+
+**Actor:** Treasurer
+
+**Description:** The Treasurer will be able to edit any entry that they have entered.
+
+**Preconditions:**
+- The Treasurer is logged into the system.
+- The Treasurer can only edit the expenses that they have entered. 
+  
+**Steps:**
+1. The treasure will view the menu. Enter option 1 for "Add a new expenses".
+2. The treasure will enter 1 for "Personal" or enter 1 for "Shared".
+3. If the expense is "Personal", the treasurer will enter the following:
+   a. Item Name
+   b. Cost
+   c. Purpose of the expenses.
+4. If the expense is "Shared", the treasurer will enter the following:
+   a. Item Name
+   b. Cost
+   c. Names of people who are sharing.
+5. The treasurer submits the new expense information.
 
 **Preconditions:**
 
-- The staff is logged into the system.
-- The staff has the necessary permissions to add a new product.
 
-**Steps:**
+
+
+
+
+
+
+
+
+
+
