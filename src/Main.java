@@ -43,10 +43,10 @@ import java.util.Scanner;
 
                             if (expenseType == 1) {
                                 sc.nextLine();
-                                System.out.print("Gift For: ");
-                                String gift = sc.nextLine();
-                                validateText(gift);
-                                expenseList.add(new PersonalExpenses(itemName, itemCost, gift));
+                                System.out.print("Purpose: ");
+                                String purpose = sc.nextLine();
+                                validateText(purpose);
+                                expenseList.add(new PersonalExpenses(itemName, itemCost, purpose));
 
                             } else if (expenseType == 2) {
                                 sc.nextLine();
@@ -153,14 +153,15 @@ import java.util.Scanner;
                                 double thisCost = cost.getCost();
                                 ArrayList<String> currentSharedArray = ((SharedExpenses) cost).getSharing();
                                 double sharedPortion = thisCost / (currentSharedArray.size()+1);
-                                totalShared =  totalShared + (thisCost - sharedPortion);
+                                totalShared =  totalShared + thisCost;
                                 individualPortion = individualPortion + sharedPortion;
                             }
 
                         }
-                        System.out.println("\nTotal Personal Spending: $" + (Math.round(totalCost * 100.0) / 100.0));
-                        System.out.println("Your share of Shared Spending: $" + (Math.round(individualPortion * 100.0) / 100.0));
-                        System.out.println("Amount to get back: $" + (Math.round(totalShared * 100.0) / 100.0));
+                        System.out.println("\nTotal Personal Expenses: $" + (Math.round(totalCost * 100.0) / 100.0));
+                        System.out.println("Total Group Expenses: $" + (Math.round(totalShared * 100.0) / 100.0));
+                        System.out.println("Your share of Shared Expenses: $" + (Math.round(individualPortion * 100.0) / 100.0));
+
 
                     }
 

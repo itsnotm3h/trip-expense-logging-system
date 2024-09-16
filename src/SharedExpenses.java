@@ -68,7 +68,7 @@ protected ArrayList<String> Sharing;
         Main.validateOption(option,lastOption);
 
 
-        if(option < this.Sharing.size() || option > 0)
+        if(option < this.Sharing.size())
         {
             System.out.println("Current name: " + this.Sharing.get(option-1));
         }
@@ -82,7 +82,7 @@ protected ArrayList<String> Sharing;
             this.Sharing.add(newInfo);
 
         }
-        else if (option <this.Sharing.size() && option > 0){
+        else{
             this.Sharing.set(option-1,newInfo);
         }
 

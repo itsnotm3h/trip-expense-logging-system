@@ -1,37 +1,37 @@
 import java.util.Scanner;
 
 public class PersonalExpenses extends Expenses {
-protected String gift;
+protected String purpose;
 
     public PersonalExpenses() {
         super();
-        gift = "Unknown";
+        purpose = "Unknown";
     }
 
-    public PersonalExpenses(String expenseName, double cost,String gift) {
+    public PersonalExpenses(String expenseName, double cost,String purpose) {
         super(expenseName, cost);
         this.dates = setDate();
-        this.gift = gift;
+        this.purpose = purpose;
     }
 
     @Override
     public String printEdit(){
-        return "Gift";
+        return "Purpose";
     }
 
     @Override
     public String getMore() {
-        return " | Gift For: "+ gift;
+        return " | Purpose: "+ purpose;
     }
 
     @Override
     public void updateInfo() {
-        System.out.println("Current Gift for: "+ this.gift);
-        System.out.print("New Gift for: ");
+        System.out.println("Current purpose: "+ this.purpose);
+        System.out.print("New purpose: ");
         Scanner sc = new Scanner(System.in);
-        String newGift = sc.nextLine();
-        Main.validateText(newGift);
-        this.gift = newGift;
+        String newPurpose = sc.nextLine();
+        Main.validateText(newPurpose);
+        this.purpose = newPurpose;
 
     }
 
