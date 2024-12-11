@@ -1,56 +1,33 @@
-# Trip Expense Logging System
-The purpose of the Trip Expenses Calculator is to provide an easy-to-use tool for tracking both shared and individual expenses during trips. Acting as a digital treasurer, this tool allows travelers to record, manage, and separate personal expenses from shared costs, ensuring clear and transparent financial management throughout the journey.
+# Trip Expense Logging System (Java CLI)
 
-### Business Objectives
-1. Record and categorize both individual and shared trip-related expenses.
-2. Separate personal expenses from shared expenses for clear accountability.
-3. Simplify the calculation and fair distribution of shared costs.
-4. Provide summaries of all expenses, ensuring transparency.
+The Trip Expense Logging System is a simple Java application for logging, editing, and deleting travel expenses. Built for command-line interaction, it allows users to track expenses during a trip.
 
-### Stakeholders
-1. Treasurer: The designated individual responsible for tracking and managing shared expenses.
-2. Secondary Users: Travelers who share expenses during trips.
+## Table of Contents
+1. [Overview](#overview)
+2. [Key Features](#key-features)
+3. [Technologies Used](#technologies-used)
+4. [What I Learned](#what-i-learned)
 
+## Overview
+The system allows users to log expenses, modify existing entries, and generate expense summaries. It’s designed to be a command-line interface application for beginners to practice basic Java programming concepts.
 
+## Key Features
 
-# Use Cases
+### Basic Features
+- **Add Expense**: Users can log a new expense by entering the item name, amount, currency, and payment method.
+- **Edit Expense**: Modify an existing expense.
+- **Delete Expense**: Remove an expense.
+- **View Summary**: Generate a summary of all expenses, either by individual or for the entire trip.
 
-## Add a new expenses
+## Technologies Used
+- **Java**: The primary programming language used for this application.
+- **IntelliJ IDEA**: The IDE used for developing, testing, and debugging the application.
+- **Command Line Interface (CLI)**: The application runs entirely in the command-line interface, providing a simple user experience.
 
-**Actor:** Treasurer
-
-**Description:** The Treasurer will add new expenses. The expenses can be either personal or shared. 
-
-**Preconditions:**
-- The Treasurer is logged into the system.
-- The Treasurer has the necessary permissions to add a new product.
-  
-**Steps:**
-1. The treasure will view the menu. Enter option 1 for "Add a new expenses".
-2. The treasure will enter 1 for "Personal" or enter 1 for "Shared".
-3. If the expense is "Personal", the treasurer will enter the following:
-   a. Item Name
-   b. Cost
-   c. Purpose of the expenses.
-4. If the expense is "Shared", the treasurer will enter the following:
-   a. Item Name
-   b. Cost
-   c. Names of people who are sharing.
-5. The treasurer submits the new expense information.
-
-**Preconditions:**
-- A new expense is added into the system.
-- The treasure can view the details of the new expenses. 
-
-
-
-
-
-
-
-
-
-
-
-
+## What I Learned
+This project has been a valuable learning experience. Here’s what I’ve learned so far:
+- **Java Basics**: I’ve become more familiar with Java syntax, including data types, operators, and flow control.
+- **User Input Handling**: I learned how to take user input through the command line and process it correctly using `Scanner`.
+- **Arrays and Lists**: I practiced using arrays and ArrayLists to store and manage data, such as expenses, in memory.
+- **Error Handling**: I learned the importance of validating inputs and handling errors gracefully, ensuring the program doesn't crash from unexpected inputs.
 
